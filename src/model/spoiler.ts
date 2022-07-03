@@ -1,21 +1,14 @@
 import { database } from "../database/database";
-import { DataTypes } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 
-
-interface spoiler {
-    id: string;
-    title: string;
-    owner: string;
-    description: string;
-}
 
 
 export const Spoiler = database.define("Spoiler", {
     id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUID,
     },
     title: {
         allowNull: false,

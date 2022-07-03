@@ -1,10 +1,7 @@
 import { Sequelize } from 'sequelize';
 
 
-export const database = new Sequelize({
-    dialect: 'sqlite',
-    storage: '../../database.sqlite'
-  });
+export const database = new Sequelize('postgres://mural:muralocal@localhost:5432/mural');
 
 try {
     database.authenticate().then(() => console.log('Connection has been established successfully.'))

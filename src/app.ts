@@ -1,6 +1,5 @@
 import express from "express";
 import { database } from "./database/database";
-import { Spoiler } from "./model/spoiler";
 import router from "./routes/spoiler";
 
 
@@ -12,10 +11,13 @@ app.use("/api", router)
 
 
 
-app.listen(3333, async () => {
-    const spoiler = Spoiler;
-    await database.sync();
-    console.log("Server is running!")
+app.listen(3333, () => {
+    try {
+        database.sync().then(() => console.log("Server is running!"));
+    } catch (error) {
+        console.log(error)
+    }
+    
 })
 
 // app.use("/api", spoilerRoute)
